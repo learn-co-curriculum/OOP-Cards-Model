@@ -16,13 +16,8 @@
 SpecBegin(BaseballPlayer)
 
 describe(@"BaseballPlayer", ^{
-    __block BaseballPlayer *player;
     
-    beforeEach(^{
-        player = [[BaseballPlayer alloc] initWithFirstName:@"Hank" lastName:@"Aaron" weight:@180 number:@44 height:@72];
-    });
-    
-    describe(@"default initializer", ^{
+    describe(@"Using BaseballPlayer initializer", ^{
         __block BaseballPlayer *defaultPlayer;
         
         beforeAll(^{
@@ -30,91 +25,115 @@ describe(@"BaseballPlayer", ^{
         });
         
         it(@"should return the default weight",^{
-            expect(defaultPlayer.weight).to.equal(@0);
+            expect(defaultPlayer.playerWeight).to.equal(@0);
         });
         
         it(@"should return the default height",^{
-            expect(defaultPlayer.height).to.equal(@0);
+            expect(defaultPlayer.playerHeight).to.equal(@0);
         });
         
         it(@"should return the default number",^{
-            expect(defaultPlayer.number).to.equal(@0);
+            expect(defaultPlayer.playerNumber).to.equal(@0);
         });
         
         it(@"should return the default first name",^{
-            expect(defaultPlayer.firstName).to.equal(@"");
+            expect(defaultPlayer.playerFirstName).to.equal(@"");
         });
         
         it(@"should return the default last name",^{
-            expect(defaultPlayer.lastName).to.equal(@"");
+            expect(defaultPlayer.playerLastName).to.equal(@"");
         });
     });
     
-    describe(@"baseball player initializer", ^{
+    describe(@"Using BaseballPlayer designated initializer", ^{
+        __block BaseballPlayer *player;
+        
+        beforeAll(^{
+            player = [[BaseballPlayer alloc] initWithFirstName:@"Hank" lastName:@"Aaron" weight:@180 number:@44 height:@72];
+        });
         
         it(@"should set weight to the correct value",^{
-            expect(player.weight).to.equal(@180);
+            expect(player.playerWeight).to.equal(@180);
         });
         
         it(@"should set height to the correct value",^{
-            expect(player.height).to.equal(@72);
+            expect(player.playerHeight).to.equal(@72);
         });
         
         it(@"should set number to the correct value",^{
-            expect(player.number).to.equal(@44);
+            expect(player.playerNumber).to.equal(@44);
         });
         
         it(@"should set first name to the correct value",^{
-            expect(player.firstName).to.equal(@"Hank");
+            expect(player.playerFirstName).to.equal(@"Hank");
         });
         
         it(@"should set last name to the correct value",^{
-            expect(player.lastName).to.equal(@"Aaron");
+            expect(player.playerLastName).to.equal(@"Aaron");
         });
     });
     
-    describe(@"convertLbsToKGsWithLbs", ^{
+    describe(@"Validate Setters/Getters with Designated Init", ^{
+        
+        __block BaseballPlayer * otherPlayer;
+        __block BaseballPlayer *alTyrus;
+
+        beforeAll(^{
+            otherPlayer =   [[BaseballPlayer alloc] init];
+            alTyrus     =   [[BaseballPlayer alloc] initWithFirstName:@"Al"
+                                                             lastName:@"Tyus"
+                                                               weight:@250
+                                                               number:@55
+                                                               height:@72];
+        });
+        
+        describe(@"", ^{
+            it(@"weight should be what I set it to",^{
+                otherPlayer.playerWeight = @250;
+                expect(otherPlayer.playerWeight).to.equal(@250);
+                
+                expect(otherPlayer.playerWeight).to.equal(alTyrus.playerWeight);
+            });
+            
+            it(@"number should be what I set it to",^{
+                otherPlayer.playerNumber = @55;
+                expect(otherPlayer.playerNumber).to.equal(@55);
+                
+                expect(otherPlayer.playerNumber).to.equal(alTyrus.playerNumber);
+            });
+            
+            it(@"height should be what I set it to",^{
+                otherPlayer.playerHeight = @72;
+                expect(otherPlayer.playerHeight).to.equal(@72);
+                
+                expect(otherPlayer.playerHeight).to.equal(alTyrus.playerHeight);
+            });
+            
+            
+            it(@"first name should be what I set it to",^{
+                otherPlayer.playerFirstName = @"Al";
+                expect(otherPlayer.playerFirstName).to.equal(@"Al");
+                
+                expect(otherPlayer.playerFirstName).to.equal(alTyrus.playerFirstName);
+                
+            });
+            
+            it(@"last name should be what I set it to",^{
+                otherPlayer.playerLastName = @"Tyus";
+                expect(otherPlayer.playerLastName).to.equal(@"Tyus");
+                
+                expect(otherPlayer.playerLastName).to.equal(alTyrus.playerLastName);
+            });
+            
+        });
+    });
+
+    describe(@"Testings convertLbsToKGsWithLbs:", ^{
         it(@"should perform a weight conversion and return the expected value",^{
             NSNumber *kilos = @(roundf([[BaseballPlayer convertLbsToKGsWithLbs:@180] floatValue]));
             expect(kilos).to.equal(@82);
         });
     });
-    
-#pragma mark - Property setter tests
-    
-    describe(@"weight property", ^{
-        it(@"weight should be what I set it to",^{
-            player.weight = @250;
-            expect(player.weight).to.equal(@250);
-        });
-    });
-    
-    describe(@"number property", ^{
-        it(@"number should be what I set it to",^{
-            player.number = @55;
-            expect(player.number).to.equal(@55);
-        });
-     
-    describe(@"height property", ^{
-        it(@"height should be what I set it to",^{
-            player.height = @72;
-            expect(player.height).to.equal(@72);
-        });
-    });
-        
-    describe(@"first name property", ^{
-        it(@"first name should be what I set it to",^{
-            player.firstName = @"Al";
-            expect(player.firstName).to.equal(@"Al");
-        });
-    });
-        
-    describe(@"last name property", ^{
-        it(@"last name should be what I set it to",^{
-            player.lastName = @"Tyus";
-            expect(player.lastName).to.equal(@"Tyus");
-        });
-    });   });
     
 });
 

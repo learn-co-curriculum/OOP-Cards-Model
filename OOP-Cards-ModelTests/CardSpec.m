@@ -34,14 +34,14 @@ describe(@"Card", ^{
     
     describe(@"isFaceUp", ^{
         it(@"should return YES if the card is face up",^{
-
-            expect(card.isFaceUp).to.equal(0);
+            card.faceUp = YES;
+            expect(card.isFaceUp).to.equal(1);
         });
     });
     
     describe(@"frame", ^{
         it(@"should return a null frame", ^{
-            expect(card.frame).to.beNil;
+            expect(card.cardFrame).to.beNil;
         });
     });
     

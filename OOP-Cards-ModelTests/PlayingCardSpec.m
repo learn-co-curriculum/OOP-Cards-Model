@@ -16,14 +16,19 @@
 SpecBegin(PlayingCard)
 
 describe(@"PlayingCard", ^{
-    __block PlayingCard *myCard;
+    
+    __block PlayingCard * myCard;
+    __block PlayingCard * defaultCard;
     beforeEach(^{
         myCard = [[PlayingCard alloc] initWithSuit:@"♠️" rank:@5];
+        defaultCard = [[PlayingCard alloc] init];
     });
     
-    it(@"exists", ^{
-        expect(myCard).notTo.beNil();
-    });  
+    describe(@"My Card is not nil", ^{
+        it(@"exists", ^{
+            expect(myCard).notTo.beNil();
+        });
+    });
     
     describe(@"initWithSuit:Rank:", ^{
         it(@"should have a suit matching what I set it to",^{
@@ -36,7 +41,7 @@ describe(@"PlayingCard", ^{
     });
     
     describe(@"init", ^{
-        __block PlayingCard *defaultCard = [[PlayingCard alloc] init];
+        
         it(@"should set suit to an empty string by default",^{
             expect(defaultCard.suit).to.equal(@"");
         });
@@ -60,82 +65,64 @@ describe(@"PlayingCard", ^{
         });
     });
     
-    describe(@"valid rank with designated initializer", ^{
-        PlayingCard *myValidPlayingCard = [[PlayingCard alloc] initWithSuit:@"♥️"
-                                                                       rank:@13];
-        PlayingCard *myInvalidPlayingCard = [[PlayingCard alloc] initWithSuit:@"♥️"
-                                                                         rank:@14];
-        it(@"valid ranks should return the value as an NSNumber",^{
-            expect(myValidPlayingCard.rank).to.equal(@13);
-        });
-        
-        it(@"invalid ranks should return 0 value",^{
-            expect(myInvalidPlayingCard.rank).to.equal(@0);
-        });
-    });
-    
-    describe(@"valid rank with setter", ^{
-        __block PlayingCard *myValidPlayingCard;
-        __block PlayingCard *myInvalidPlayingCard;
-        
-        beforeAll(^{
-            myValidPlayingCard = [[PlayingCard alloc] init];
-            myInvalidPlayingCard = [[PlayingCard alloc] init];
-            myValidPlayingCard.rank = @13;
-            myInvalidPlayingCard.rank = @14;
-        });
-        
-        it(@"valid ranks should return value as NSNumber",^{
-            expect(myValidPlayingCard.rank).to.equal(@13);
-        });
-        
-        it(@"invalid ranks should return 0 value",^{
-            expect(myInvalidPlayingCard.rank).to.equal(@0);
-        });
-    });
-    
-    describe(@"valid suit with with designated initializer", ^{
-        __block PlayingCard *myValidPlayingCard;
-        __block PlayingCard *myInvalidPlayingCard;
-        
-        beforeAll(^{
-            myValidPlayingCard = [[PlayingCard alloc] initWithSuit:@"♥️" rank:@13];
-            myInvalidPlayingCard = [[PlayingCard alloc] initWithSuit:@"X" rank:@14];
-        });
-        
-        it(@"valid suits should return suit",^{
-            expect(myValidPlayingCard.suit).to.equal(@"♥️");
-        });
-        it(@"invalid suits should return an empty string",^{
-            expect(myInvalidPlayingCard.suit).to.equal(@"");
-        });
-    });
-    
-    describe(@"valid suit with setter", ^{
-        __block PlayingCard *myValidPlayingCard;
-        __block PlayingCard *myInvalidPlayingCard;
-        
-        beforeAll(^{
-            myValidPlayingCard = [[PlayingCard alloc] init];
-            myInvalidPlayingCard = [[PlayingCard alloc] init];
-        });
-        
-        it(@"valid suits should return a valid suit",^{
-            myValidPlayingCard.suit = @"♥️";
-            expect(myValidPlayingCard.suit).to.equal(@"♥️");
-        });
-        
-        it(@"invalid suits should return an empty string",^{
-            myInvalidPlayingCard.suit = @"X";
-            expect(myInvalidPlayingCard.suit).to.equal(@"");
-        });
-    });
-    
     describe(@"isFaceUp", ^{
         it(@"isFaceUp to return the set value",^{
             myCard.faceUp = YES;
             expect(myCard.isFaceUp).to.beTruthy();
         });
+    });
+});
+    
+describe(@"Validation with inherited init", ^{
+    __block PlayingCard *myValidPlayingCard;
+    __block PlayingCard *myInvalidPlayingCard;
+    
+    beforeEach(^{
+        myValidPlayingCard = [[PlayingCard alloc] init];
+        myInvalidPlayingCard = [[PlayingCard alloc] init];
+    });
+    
+    it(@"valid ranks should return value as NSNumber",^{
+        myValidPlayingCard.rank = @13;
+        expect(myValidPlayingCard.rank).to.equal(@13);
+    });
+    
+    it(@"invalid ranks should return 0 value",^{
+        myInvalidPlayingCard.rank = @14;
+        expect(myInvalidPlayingCard.rank).to.equal(@0);
+    });
+    
+    it(@"valid suits should return a valid suit",^{
+        myValidPlayingCard.suit = @"♥️";
+        expect(myValidPlayingCard.suit).to.equal(@"♥️");
+    });
+    
+    it(@"invalid suits should return an empty string",^{
+        myInvalidPlayingCard.suit = @"X";
+        expect(myInvalidPlayingCard.suit).to.equal(@"");
+    });
+});
+
+describe(@"Validation with designated initializer", ^{
+    __block PlayingCard *myValidPlayingCard;
+    __block PlayingCard *myInvalidPlayingCard;
+    
+    beforeAll(^{
+        myValidPlayingCard = [[PlayingCard alloc] initWithSuit:@"♥️" rank:@13];
+        myInvalidPlayingCard = [[PlayingCard alloc] initWithSuit:@"X" rank:@14];
+    });
+    
+    it(@"valid suits should return suit",^{
+        expect(myValidPlayingCard.suit).to.equal(@"♥️");
+    });
+    it(@"invalid suits should return an empty string",^{
+        expect(myInvalidPlayingCard.suit).to.equal(@"");
+    });
+    it(@"valid rank shoud return rank", ^{
+        expect(myValidPlayingCard.rank).to.equal(@13);
+    });
+    it(@"invalid rank should return 0", ^{
+        expect(myInvalidPlayingCard.rank).to.equal(@0);
     });
 });
 

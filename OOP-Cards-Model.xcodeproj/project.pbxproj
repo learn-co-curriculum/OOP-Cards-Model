@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B5E1691A902EC7008A9A7D /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E1681A902EC7008A9A7D /* Card.m */; };
+		14B5E16E1A902F1D008A9A7D /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E16D1A902F1D008A9A7D /* PlayingCard.m */; };
+		14B5E1711A902F33008A9A7D /* BaseballCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E1701A902F33008A9A7D /* BaseballCard.m */; };
+		14B5E1741A9030A6008A9A7D /* BaseballPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E1731A9030A6008A9A7D /* BaseballPlayer.m */; };
 		404F75B720B2496BAE31D058 /* libPods-OOP-Cards-ModelTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19591EEAF47649EEA6965847 /* libPods-OOP-Cards-ModelTests.a */; };
 		44CFDE96189C389300238AA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CFDE95189C389300238AA4 /* Foundation.framework */; };
 		44CFDE98189C389300238AA4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CFDE97189C389300238AA4 /* CoreGraphics.framework */; };
@@ -36,6 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14B5E1671A902EC7008A9A7D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		14B5E1681A902EC7008A9A7D /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		14B5E16C1A902F1D008A9A7D /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
+		14B5E16D1A902F1D008A9A7D /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
+		14B5E16F1A902F33008A9A7D /* BaseballCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseballCard.h; sourceTree = "<group>"; };
+		14B5E1701A902F33008A9A7D /* BaseballCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseballCard.m; sourceTree = "<group>"; };
+		14B5E1721A9030A6008A9A7D /* BaseballPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseballPlayer.h; sourceTree = "<group>"; };
+		14B5E1731A9030A6008A9A7D /* BaseballPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseballPlayer.m; sourceTree = "<group>"; };
 		19591EEAF47649EEA6965847 /* libPods-OOP-Cards-ModelTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OOP-Cards-ModelTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F92936DC853F56AA293AF18 /* Pods-OOP-Cards-ModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OOP-Cards-ModelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OOP-Cards-ModelTests/Pods-OOP-Cards-ModelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		44CFDE92189C389300238AA4 /* OOP-Cards-Model.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OOP-Cards-Model.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +106,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		14B5E16A1A902EDB008A9A7D /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				44CFDEA4189C389300238AA4 /* AppDelegate.h */,
+				44CFDEA5189C389300238AA4 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		14B5E16B1A902EEA008A9A7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14B5E1671A902EC7008A9A7D /* Card.h */,
+				14B5E1681A902EC7008A9A7D /* Card.m */,
+				14B5E16C1A902F1D008A9A7D /* PlayingCard.h */,
+				14B5E16D1A902F1D008A9A7D /* PlayingCard.m */,
+				14B5E16F1A902F33008A9A7D /* BaseballCard.h */,
+				14B5E1701A902F33008A9A7D /* BaseballCard.m */,
+				14B5E1721A9030A6008A9A7D /* BaseballPlayer.h */,
+				14B5E1731A9030A6008A9A7D /* BaseballPlayer.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		44CFDE89189C389300238AA4 = {
 			isa = PBXGroup;
 			children = (
@@ -129,9 +165,8 @@
 		44CFDE9B189C389300238AA4 /* OOP-Cards-Model */ = {
 			isa = PBXGroup;
 			children = (
-				44CFDEA4189C389300238AA4 /* AppDelegate.h */,
-				44CFDEA5189C389300238AA4 /* AppDelegate.m */,
-				44CFDEA7189C389300238AA4 /* Images.xcassets */,
+				14B5E16A1A902EDB008A9A7D /* App Delegate */,
+				14B5E16B1A902EEA008A9A7D /* Model */,
 				44CFDE9C189C389300238AA4 /* Supporting Files */,
 			);
 			path = "OOP-Cards-Model";
@@ -140,6 +175,7 @@
 		44CFDE9C189C389300238AA4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				44CFDEA7189C389300238AA4 /* Images.xcassets */,
 				44CFDE9D189C389300238AA4 /* OOP-Cards-Model-Info.plist */,
 				44CFDE9E189C389300238AA4 /* InfoPlist.strings */,
 				44CFDEA1189C389300238AA4 /* main.m */,
@@ -299,8 +335,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B5E1711A902F33008A9A7D /* BaseballCard.m in Sources */,
 				44CFDEA6189C389300238AA4 /* AppDelegate.m in Sources */,
+				14B5E1741A9030A6008A9A7D /* BaseballPlayer.m in Sources */,
 				44CFDEA2189C389300238AA4 /* main.m in Sources */,
+				14B5E16E1A902F1D008A9A7D /* PlayingCard.m in Sources */,
+				14B5E1691A902EC7008A9A7D /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
